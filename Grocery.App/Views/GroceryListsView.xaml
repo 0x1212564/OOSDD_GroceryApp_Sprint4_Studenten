@@ -13,7 +13,7 @@
     </Shell.TitleView>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Klanten per product" 
+        <ToolbarItem Text="{Binding _globalViewModel.Client.Name}" 
                      Command="{Binding ShowBoughtProductsCommand}" 
                      Priority="0" />
     </ContentPage.ToolbarItems>

@@ -11,6 +11,9 @@ namespace Grocery.App.ViewModels
         public ObservableCollection<GroceryList> GroceryLists { get; set; }
         private readonly IGroceryListService _groceryListService;
         private readonly GlobalViewModel _globalViewModel;
+        
+        public GlobalViewModel GlobalViewModel => _globalViewModel;
+        public string ClientName => _globalViewModel?.Client?.Name ?? "Gast";
 
         public GroceryListViewModel(IGroceryListService groceryListService, GlobalViewModel globalViewModel) 
         {
@@ -45,6 +48,7 @@ namespace Grocery.App.ViewModels
         {
             base.OnAppearing();
             GroceryLists = new(_groceryListService.GetAll());
+            OnPropertyChanged(nameof(ClientName));
         }
 
         public override void OnDisappearing()

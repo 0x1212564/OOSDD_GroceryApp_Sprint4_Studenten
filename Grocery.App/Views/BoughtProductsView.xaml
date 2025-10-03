@@ -18,7 +18,6 @@
         <Picker Grid.Column="0" Grid.Row="0" Margin="10,0,0,0" Title="Klik op onderstaand pijltje om een product te selecteren:"
         ItemsSource="{Binding Products}"
         SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" 
-        SelectedIndexChanged="Picker_SelectedIndexChanged"
         BackgroundColor="{StaticResource Primary}"
             TextColor="{StaticResource Secondary}">
         </Picker>
@@ -27,6 +26,16 @@
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
                 </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Klant" FontAttributes="Bold" HorizontalTextAlignment="Center" Padding="5"/>
+                        <Label Grid.Column="1" Text="Boodschappenlijst" FontAttributes="Bold" HorizontalTextAlignment="Center" Padding="5"/>
+                    </Grid>
+                </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:BoughtProducts" >
                         <Grid>
@@ -34,7 +43,9 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <!-- Toon hier de naam van de Client naam van de boodschappenlijst -->
+                            <!-- Display client name and grocery list name -->
+                            <Label Grid.Column="0" Text="{Binding Client.Name}" HorizontalTextAlignment="Center" Padding="5"/>
+                            <Label Grid.Column="1" Text="{Binding GroceryList.Name}" HorizontalTextAlignment="Center" Padding="5"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
